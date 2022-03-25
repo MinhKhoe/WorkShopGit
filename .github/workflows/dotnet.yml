@@ -25,14 +25,17 @@ jobs:
       run: dotnet test --no-build --verbosity normal WorkShop.sln
     - name: Publish
       run: dotnet publish WorkShop.sln
-    - name: Generate ZIP
-      uses: byteever/action-build-zip@master
+    - name: Archive files
+      run: |
+        sudo apt-get update
+        sudo apt-get install zip
+        zip -r archive.zip *
+
+    - name: Upload to gdrive
+      uses: adityak74/google-drive-upload-git-action@main
       with:
-         filename: 'release.zip'
-    - uses: mkrakowitzer/actions-googledrive@master
-      with:
-        upload-from: ./tmp
-        upload-to: IRL-L2-Support/platform-architecture-docs
-        skicka-tokencache-json: ${{ secrets.FOO }}
-        google-client-id: ${{ secrets.BAR }}
-        google-client-secret: ${{ secrets.BAZ }}
+          credentials: ${{ secrets.credentials }}
+          filename: "archive.zip"
+          folderId: ${{ secrets.folderId }}
+          name: "documentation.zip" # optional string
+          overwrite: "true" # optional boolean
