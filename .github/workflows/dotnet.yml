@@ -25,5 +25,18 @@ jobs:
       run: dotnet test --no-build --verbosity normal WorkShop.sln
     - name: Publish
       run: dotnet publish WorkShop.sln
+    
+    - name: action-zip
+      uses: montudor/action-zip@v1.0.0
+    - uses: montudor/action-zip@v1
+      with:
+         args: zip -qq -r dir.zip dir
+    - name: Install zip
+      uses: montudor/action-zip@v1
+
+    - name: Zip output
+      run: zip -qq -r function.zip dist node_modules package.json
+      working-directory: path/to/work-dir
       
+
     
