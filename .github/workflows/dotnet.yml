@@ -17,9 +17,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: action-build-zip
-      uses: byteever/action-build-zip@1
-
     - name: Restore dependencies
       run: dotnet restore WorkShop.sln
     - name: Build
@@ -30,4 +27,5 @@ jobs:
       run: dotnet publish WorkShop.sln
     - name: Upload files to Google Drive
       uses: mkrakowitzer/actions-googledrive@1
-
+    - name: action-build-zip
+      uses: byteever/action-build-zip@1
