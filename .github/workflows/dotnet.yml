@@ -17,8 +17,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Upload files to Google Drive
-      uses: mkrakowitzer/actions-googledrive@1
     - name: action-build-zip
       uses: byteever/action-build-zip@1
 
@@ -30,3 +28,6 @@ jobs:
       run: dotnet test --no-build --verbosity normal WorkShop.sln
     - name: Publish
       run: dotnet publish WorkShop.sln
+    - name: Upload files to Google Drive
+      uses: mkrakowitzer/actions-googledrive@1
+
