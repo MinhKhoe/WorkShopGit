@@ -24,4 +24,4 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal WorkShop.sln
     - name: Publish
-      run: dotnet publish WorkShop.sln
+      run: dotnet publish WorkShop/WorkShop.csproj
