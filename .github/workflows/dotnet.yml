@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Publish
+      run: dotnet publish WorkShop/WorkShop.csproj
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
@@ -23,5 +25,3 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal WorkShop.sln
-    - name: Publish
-      run: dotnet publish WorkShop/WorkShop.csproj
